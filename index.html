@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
+<link rel="stylesheet" href="style.css" />
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Cyberpunk AI Gaming Profile</title>
 
 <style>
@@ -291,11 +292,19 @@ function aiVoice(){
 
 /* TILT 3D */
 const card=document.getElementById('card');
-document.addEventListener('mousemove',e=>{
-    let x=(window.innerWidth/2-e.clientX)/30;
-    let y=(window.innerHeight/2-e.clientY)/30;
-    card.style.transform=`rotateY(${x}deg) rotateX(${y}deg)`;
-});
+
+if(window.innerWidth > 768){
+    document.addEventListener('mousemove',e=>{
+        let x=(window.innerWidth/2-e.clientX)/30;
+        let y=(window.innerHeight/2-e.clientY)/30;
+        card.style.transform=`rotateY(${x}deg) rotateX(${y}deg)`;
+    });
+
+    document.addEventListener('mouseleave',()=>{
+        card.style.transform=`rotateY(0deg) rotateX(0deg)`;
+    });
+}
+
 document.addEventListener('mouseleave',()=>{
     card.style.transform=`rotateY(0deg) rotateX(0deg)`;
 });
