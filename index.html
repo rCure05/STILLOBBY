@@ -1,50 +1,218 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portofolio Saya</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Biodata Interaktif</title>
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    background: linear-gradient(120deg, #000, #050505, #111, #000);
+    background-size: 400% 400%;
+    animation: bgMove 12s infinite alternate;
+    color: #fff;
+    min-height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@keyframes bgMove {
+    0% {background-position: 0% 50%;}
+    100% {background-position: 100% 50%;}
+}
+
+/* Partikel background */
+.particles span {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: rgba(255,255,255,0.6);
+    border-radius: 50%;
+    animation: float 12s linear infinite;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(100vh) scale(0);
+        opacity: 0;
+    }
+    30% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-10vh) scale(1);
+        opacity: 0;
+    }
+}
+
+/* Card */
+.card {
+    background: rgba(255,255,255,0.95);
+    color: #000;
+    width: 340px;
+    padding: 32px;
+    border-radius: 20px;
+    text-align: center;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 0 50px rgba(255,255,255,0.25);
+    animation: fadeUp 1.2s ease forwards;
+    transition: transform 0.15s ease, box-shadow 0.3s ease;
+    perspective: 1000px;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Profile */
+.profile-img {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    border: 4px solid #000;
+    margin-bottom: 15px;
+    animation: pulse 2.5s infinite;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(0,0,0,0.5); }
+    70% { box-shadow: 0 0 0 18px rgba(0,0,0,0); }
+    100% { box-shadow: 0 0 0 0 rgba(0,0,0,0); }
+}
+
+h1 {
+    font-size: 26px;
+    margin-bottom: 6px;
+}
+
+.role {
+    font-size: 14px;
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+    opacity: 0.7;
+}
+
+.info p {
+    font-size: 13px;
+    margin: 7px 0;
+}
+
+.social-links {
+    margin-top: 18px;
+}
+
+.social-links a {
+    position: relative;
+    display: inline-block;
+    margin: 7px;
+    padding: 12px 22px;
+    border-radius: 30px;
+    background: #000;
+    color: #fff;
+    text-decoration: none;
+    overflow: hidden;
+    transition: 0.35s;
+}
+
+.social-links a::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -120%;
+    width: 120%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.6), transparent);
+    transition: 0.6s;
+}
+
+.social-links a:hover::before {
+    left: 100%;
+}
+
+.social-links a:hover {
+    transform: translateY(-5px) scale(1.07);
+    box-shadow: 0 0 15px rgba(0,0,0,0.6);
+}
+
+.footer {
+    margin-top: 20px;
+    font-size: 12px;
+    opacity: 0.6;
+}
+
+</style>
 </head>
 <body>
 
-    <section id="about">
-        <h2>Halo Semuanya !</h2>
-        <p>Selamat datang di ruang sederhanaku.</p>
-        <p>Namaku STILL OBBY.</p>
-        <p>Selamat datang di website data diri Saya. Website ini dibuat sebagai media informasi singkat yang memuat identitas, latar belakang, dan data pendukung secara ringkas, jelas, dan mudah diakses. Semoga website ini dapat memberikan gambaran yang bermanfaat serta menjadi referensi yang informatif bagi para pengunjung. Terima kasih atas kunjungannya.</p>
-        <img src="profile.img" alt="Foto Profil" class="profile-img">
-    </section>
+<!-- Background particles -->
+<div class="particles">
+    <span style="left:5%; animation-delay:0s"></span>
+    <span style="left:15%; animation-delay:2s"></span>
+    <span style="left:25%; animation-delay:4s"></span>
+    <span style="left:35%; animation-delay:1s"></span>
+    <span style="left:45%; animation-delay:3s"></span>
+    <span style="left:55%; animation-delay:5s"></span>
+    <span style="left:65%; animation-delay:2.5s"></span>
+    <span style="left:75%; animation-delay:4.5s"></span>
+    <span style="left:85%; animation-delay:1.5s"></span>
+    <span style="left:95%; animation-delay:3.5s"></span>
+</div>
 
-    <section id="portfolio">
-        <h2>Tempat Main</h2>
-        <div class="gallery">
-            <div class="item">
-                <img src="fivem.img" alt="Proyek 1">
-                <p>GTA ROLEPLAY</p>
-            </div>
-            <div class="item">
-                <img src="roblox.img" alt="Proyek 2">
-                <p>ROBLOX</p>
-            </div>
-            <div class="item">
-                <img src="comingsoon.img" alt="Proyek 3">
-                <p>COMING SOON</p>
-            </div>
-        </div>
-    </section>
+<div class="card" id="card">
+    <img src="profile.img" class="profile-img">
 
-    <footer>
-        <h3>Ikuti Saya</h3>
-        <div class="social-links">
-            <a href="https://www.instagram.com/obbystill?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank">Instagram</a>
-            <a href="https://discord.gg/Hxhwwt6FHC" target="_blank">Discord</a>
-            <a href="https://www.tiktok.com/@stillobby?is_from_webapp=1&sender_device=pc" target="_blank">Tiktok</a>
-            <a href="https://www.youtube.com/@rCure-t7w" target="_blank">Youtube</a>
-        </div>
-        <p>&copy; 2025 [Still Obby]. Made With Love.</p>
-    </footer>
+    <h1>Still Obby</h1>
+    <div class="role">MULTIVERSE</div>
 
-    <script src="script.js"></script>
+    <div class="info">
+        <p>📍 Indonesia</p>
+        <p>Tak ada rotan, akar pun jadi.</p>
+    </div>
+
+    <div class="social-links">
+        <a href="https://www.youtube.com/@rCure-t7w" target="_blank">Youtube</a>
+        <a href="https://discord.gg/Hxhwwt6FHC" target="_blank">Discord</a>
+    </div>
+
+    <div class="social-links">
+        <a href="https://www.instagram.com/obbystill" target="_blank">Instagram</a>
+        <a href="https://www.tiktok.com/@stillobby" target="_blank">Tiktok</a>
+    </div>
+
+    <div class="footer">© 2025 Still Obby</div>
+</div>
+
+<script>
+/* Efek tilt 3D mengikuti mouse */
+const card = document.getElementById('card');
+
+document.addEventListener('mousemove', e => {
+    let x = (window.innerWidth / 2 - e.clientX) / 25;
+    let y = (window.innerHeight / 2 - e.clientY) / 25;
+    card.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
+});
+
+document.addEventListener('mouseleave', () => {
+    card.style.transform = 'rotateY(0deg) rotateX(0deg)';
+});
+</script>
+
 </body>
 </html>
