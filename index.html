@@ -3,217 +3,303 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>STILL OBBY</title>
+<title>Cyberpunk AI Gaming Profile</title>
 
 <style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif;}
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', sans-serif;
+body{
+    background:#000;
+    min-height:100vh;
+    overflow:hidden;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:#fff;
 }
 
-body {
-    background: linear-gradient(120deg, #000, #050505, #111, #000);
-    background-size: 400% 400%;
-    animation: bgMove 12s infinite alternate;
-    color: #fff;
-    min-height: 100vh;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+/* CYBERPUNK CITY */
+.city{
+    position:fixed;
+    inset:0;
+    background:url('https://i.redd.it/mdvmefeejg331.jpg') center/cover no-repeat;
+    filter:brightness(.45) saturate(1.5);
+    animation:cityMove 20s linear infinite alternate;
+    z-index:-2;
 }
 
-@keyframes bgMove {
-    0% {background-position: 0% 50%;}
-    100% {background-position: 100% 50%;}
+@keyframes cityMove{
+    from{transform:scale(1) translateY(0);}
+    to{transform:scale(1.08) translateY(-25px);}
 }
 
-/* Partikel background */
-.particles span {
-    position: absolute;
-    width: 6px;
-    height: 6px;
-    background: rgba(255,255,255,0.6);
-    border-radius: 50%;
-    animation: float 12s linear infinite;
+/* NEON FOG */
+.city::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:radial-gradient(circle at center, transparent, rgba(0,0,0,.7));
 }
 
-@keyframes float {
-    0% {
-        transform: translateY(100vh) scale(0);
-        opacity: 0;
-    }
-    30% {
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(-10vh) scale(1);
-        opacity: 0;
-    }
+/* LOADING */
+.loading{
+    position:fixed;
+    inset:0;
+    background:#000;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    z-index:999;
 }
 
-/* Card */
-.card {
-    background: rgba(255,255,255,0.95);
-    color: #000;
-    width: 340px;
-    padding: 32px;
-    border-radius: 20px;
-    text-align: center;
-    backdrop-filter: blur(12px);
-    box-shadow: 0 0 50px rgba(255,255,255,0.25);
-    animation: fadeUp 1.2s ease forwards;
-    transition: transform 0.15s ease, box-shadow 0.3s ease;
-    perspective: 1000px;
+.loading h2{
+    letter-spacing:4px;
+    color:cyan;
+    margin-bottom:15px;
 }
 
-@keyframes fadeUp {
-    from {
-        opacity: 0;
-        transform: translateY(50px) scale(0.9);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
+.bar{
+    width:260px;
+    height:8px;
+    border-radius:10px;
+    background:#111;
+    overflow:hidden;
 }
 
-/* Profile */
-.profile-img {
-    width: 130px;
-    height: 130px;
-    border-radius: 50%;
-    border: 4px solid #000;
-    margin-bottom: 15px;
-    animation: pulse 2.5s infinite;
+.bar span{
+    display:block;
+    height:100%;
+    width:0%;
+    background:linear-gradient(90deg,cyan,magenta,cyan);
+    animation:load 3s forwards;
 }
 
-@keyframes pulse {
-    0% { box-shadow: 0 0 0 0 rgba(0,0,0,0.5); }
-    70% { box-shadow: 0 0 0 18px rgba(0,0,0,0); }
-    100% { box-shadow: 0 0 0 0 rgba(0,0,0,0); }
+@keyframes load{to{width:100%;}}
+
+/* HUD GLOBAL */
+.hud-global{
+    position:fixed;
+    top:20px;
+    right:20px;
+    font-size:11px;
+    color:cyan;
+    border:1px solid rgba(0,255,255,.6);
+    padding:10px 14px;
+    border-radius:10px;
+    background:rgba(0,0,0,.6);
+    letter-spacing:1px;
+    z-index:10;
+    animation:pulse 2s infinite;
 }
 
-h1 {
-    font-size: 26px;
-    margin-bottom: 6px;
+@keyframes pulse{
+    0%,100%{box-shadow:0 0 10px rgba(0,255,255,.3);}
+    50%{box-shadow:0 0 20px rgba(0,255,255,.8);}
 }
 
-.role {
-    font-size: 14px;
-    letter-spacing: 2px;
-    margin-bottom: 16px;
-    opacity: 0.7;
+/* AI PANEL */
+.ai-panel{
+    position:fixed;
+    left:15px;
+    bottom:20px;
+    width:240px;
+    padding:14px;
+    border-radius:12px;
+    background:rgba(0,0,0,.65);
+    border:1px solid rgba(0,255,255,.6);
+    color:cyan;
+    font-size:11px;
+    letter-spacing:1px;
+    box-shadow:0 0 15px rgba(0,255,255,.3);
+    z-index:9;
 }
 
-.info p {
-    font-size: 13px;
-    margin: 7px 0;
+.ai-title{
+    font-weight:bold;
+    letter-spacing:2px;
+    margin-bottom:8px;
 }
 
-.social-links {
-    margin-top: 18px;
+.ai-log{
+    height:90px;
+    overflow:hidden;
+    font-size:10px;
+    opacity:.85;
 }
 
-.social-links a {
-    position: relative;
-    display: inline-block;
-    margin: 7px;
-    padding: 12px 22px;
-    border-radius: 30px;
-    background: #000;
-    color: #fff;
-    text-decoration: none;
-    overflow: hidden;
-    transition: 0.35s;
+.ai-log div{margin-bottom:4px;}
+
+/* CARD */
+.card{
+    position:relative;
+    width:360px;
+    padding:34px;
+    border-radius:22px;
+    text-align:center;
+    background:rgba(0,0,0,.65);
+    backdrop-filter:blur(16px);
+    overflow:hidden;
+    border:2px solid transparent;
+    z-index:2;
 }
 
-.social-links a::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -120%;
-    width: 120%;
-    height: 100%;
-    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.6), transparent);
-    transition: 0.6s;
+/* RGB BORDER */
+.card::before{
+    content:"";
+    position:absolute;
+    inset:-2px;
+    background:linear-gradient(120deg,red,orange,yellow,green,cyan,blue,purple,red);
+    background-size:300% 300%;
+    animation:rgb 6s linear infinite;
+    z-index:-1;
 }
 
-.social-links a:hover::before {
-    left: 100%;
+@keyframes rgb{
+    0%{background-position:0% 50%;}
+    100%{background-position:300% 50%;}
 }
 
-.social-links a:hover {
-    transform: translateY(-5px) scale(1.07);
-    box-shadow: 0 0 15px rgba(0,0,0,0.6);
+/* PROFILE */
+.profile-img{
+    width:120px;
+    height:120px;
+    border-radius:50%;
+    border:3px solid cyan;
+    margin-bottom:15px;
+    box-shadow:0 0 15px cyan,0 0 45px rgba(0,255,255,.7);
 }
 
-.footer {
-    margin-top: 20px;
-    font-size: 12px;
-    opacity: 0.6;
+h1,.role,.info,.social-links,.footer{position:relative;z-index:3;}
+h1{font-size:26px;letter-spacing:2px;}
+.role{font-size:13px;margin:8px 0 16px;letter-spacing:3px;color:cyan;}
+.info p{font-size:13px;margin:7px 0;opacity:.85;}
+
+.social-links a{
+    display:inline-block;
+    margin:8px;
+    padding:12px 22px;
+    border-radius:30px;
+    background:rgba(0,0,0,.6);
+    border:1px solid rgba(0,255,255,.6);
+    color:cyan;
+    text-decoration:none;
+    transition:.35s;
+    z-index:5;
 }
 
+.social-links a:hover{
+    background:cyan;
+    color:#000;
+    box-shadow:0 0 15px cyan,0 0 45px cyan;
+    transform:translateY(-4px) scale(1.08);
+}
+
+.footer{margin-top:18px;font-size:12px;opacity:.5;}
+
+.card{transition:transform .12s ease;}
 </style>
 </head>
 <body>
 
-<!-- Background particles -->
-<div class="particles">
-    <span style="left:5%; animation-delay:0s"></span>
-    <span style="left:15%; animation-delay:2s"></span>
-    <span style="left:25%; animation-delay:4s"></span>
-    <span style="left:35%; animation-delay:1s"></span>
-    <span style="left:45%; animation-delay:3s"></span>
-    <span style="left:55%; animation-delay:5s"></span>
-    <span style="left:65%; animation-delay:2.5s"></span>
-    <span style="left:75%; animation-delay:4.5s"></span>
-    <span style="left:85%; animation-delay:1.5s"></span>
-    <span style="left:95%; animation-delay:3.5s"></span>
+<div class="loading" id="loading">
+    <h2>BANGGA LEWATI DENGANMU HARI INI</h2>
+    <div class="bar"><span></span></div>
+</div>
+
+<div class="city"></div>
+
+<div class="hud-global" id="hud"></div>
+
+<div class="ai-panel">
+    <div class="ai-title">AI DASHBOARD</div>
+    <div class="ai-log" id="aiLog"></div>
 </div>
 
 <div class="card" id="card">
     <img src="profile.img" class="profile-img">
-
     <h1>Still Obby</h1>
     <div class="role">MULTIVERSE</div>
-
     <div class="info">
         <p>📍 Indonesia</p>
         <p>Tak ada rotan, akar pun jadi.</p>
     </div>
 
     <div class="social-links">
-        <a href="https://www.youtube.com/@rCure-t7w" target="_blank">Youtube</a>
+        <a href="https://www.youtube.com/@rCure-t7w" target="_blank">YouTube</a>
         <a href="https://discord.gg/Hxhwwt6FHC" target="_blank">Discord</a>
     </div>
-
     <div class="social-links">
         <a href="https://www.instagram.com/obbystill" target="_blank">Instagram</a>
-        <a href="https://www.tiktok.com/@stillobby" target="_blank">Tiktok</a>
+        <a href="https://www.tiktok.com/@stillobby" target="_blank">TikTok</a>
     </div>
-
-    <div class="footer">© 2025 Still Obby</div>
+    <div class="footer">© 2025 STILL OBBY</div>
 </div>
 
 <script>
-/* Efek tilt 3D mengikuti mouse */
-const card = document.getElementById('card');
+/* LOADING */
+setTimeout(()=>{
+    document.getElementById('loading').style.display='none';
+    aiVoice();
+},3000);
 
-document.addEventListener('mousemove', e => {
-    let x = (window.innerWidth / 2 - e.clientX) / 25;
-    let y = (window.innerHeight / 2 - e.clientY) / 25;
-    card.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
+/* HUD LIVE */
+setInterval(()=>{
+    let fps = 100 + Math.floor(Math.random()*40);
+    let ping = 10 + Math.floor(Math.random()*20);
+    let time = new Date().toLocaleTimeString();
+    document.getElementById('hud').innerHTML =
+        `FPS: ${fps}<br>PING: ${ping}ms<br>STATUS: ONLINE<br>TIME: ${time}`;
+},1000);
+
+/* AI LOG */
+const logs=[
+   "Hallo...",
+    "Semoga kalian bahagia...",
+    "Ini web sederhana saya...",
+    "Dengan akal akalan seadanya...",
+    "Jika berkenan...",
+    "Silahkan kunjungi beberapa...",
+    "Social media saya...",
+    "Terimakasih...",
+    "System stable ✔",
+    "AI prediction module ready...",
+    "Threat level: NONE",
+    "Neural sync complete..."
+];
+
+let aiIndex=0;
+setInterval(()=>{
+    const logBox=document.getElementById('aiLog');
+    if(logBox.children.length>6) logBox.removeChild(logBox.firstChild);
+    let div=document.createElement('div');
+    div.textContent="> "+logs[aiIndex%logs.length];
+    logBox.appendChild(div);
+    aiIndex++;
+},900);
+
+/* AI VOICE ASSISTANT */
+function aiVoice(){
+    const msg = new SpeechSynthesisUtterance(
+        "Selamat datang, Still Obby. Sistem cyber punk aktif. Selamat menikmati pengalaman futuristik."
+    );
+    msg.lang = "id-ID";
+    msg.rate = 0.9;
+    msg.pitch = 1.1;
+    speechSynthesis.speak(msg);
+}
+
+/* TILT 3D */
+const card=document.getElementById('card');
+document.addEventListener('mousemove',e=>{
+    let x=(window.innerWidth/2-e.clientX)/30;
+    let y=(window.innerHeight/2-e.clientY)/30;
+    card.style.transform=`rotateY(${x}deg) rotateX(${y}deg)`;
 });
-
-document.addEventListener('mouseleave', () => {
-    card.style.transform = 'rotateY(0deg) rotateX(0deg)';
+document.addEventListener('mouseleave',()=>{
+    card.style.transform=`rotateY(0deg) rotateX(0deg)`;
 });
 </script>
 
 </body>
 </html>
-
