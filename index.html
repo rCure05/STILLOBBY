@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="style.css" />
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Cyberpunk AI Gaming Profile</title>
+<title>STILL OBBY</title>
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif;}
@@ -309,6 +309,54 @@ document.addEventListener('mouseleave',()=>{
     card.style.transform=`rotateY(0deg) rotateX(0deg)`;
 });
 </script>
+
+<div class="particles" id="particles"></div>
+<div class="scanline"></div>
+<div class="radar">
+    <div class="sweep"></div>
+    <div class="rings"></div>
+    <div class="blips" id="blips"></div>
+</div>
+
+<!-- MATRIX RAIN -->
+<canvas id="matrix"></canvas>
+
+<!-- SYSTEM TERMINAL -->
+<div class="terminal">
+    <div class="terminal-title">SYSTEM TERMINAL</div>
+    <div class="terminal-log" id="terminalLog"></div>
+</div>
+
+<!-- DNA SCANNER -->
+<div class="dna-scanner">
+    <div class="helix"></div>
+    <div class="scanline-dna"></div>
+</div>
+
+<!-- SYSTEM CONTROL PANEL -->
+<div class="control-panel">
+    <div class="panel-title">SYSTEM CONTROL</div>
+
+    <div class="control">
+        <span>MATRIX RAIN</span>
+        <label class="switch">
+            <input type="checkbox" id="matrixToggle" checked>
+            <span class="slider"></span>
+        </label>
+    </div>
+
+    <div class="control">
+        <span>NEON PARTICLES</span>
+        <label class="switch">
+            <input type="checkbox" id="particleToggle" checked>
+            <span class="slider"></span>
+        </label>
+    </div>
+
+</div>
+
+
+<script src="script.js"></script>
 
 </body>
 </html>
