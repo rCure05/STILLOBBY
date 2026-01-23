@@ -350,3 +350,25 @@ html, body {
 .switch input:checked + .slider:before{
     transform:translateX(20px);
 }
+
+/* MOBILE CLEAN MODE */
+@media (max-width: 768px){
+    
+    .hud-global,
+    .ai-panel,
+    .radar,
+    .terminal,
+    .control-panel,
+    .dna-scanner{
+        display:none !important;
+    }
+
+    #matrix{
+        opacity:.12;
+    }
+
+    .card{
+        transform:none !important;
+    }
+
+}
