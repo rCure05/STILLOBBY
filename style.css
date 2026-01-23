@@ -350,12 +350,3 @@ html, body {
 .switch input:checked + .slider:before{
     transform:translateX(20px);
 }
-
-[ RADAR ]     [ CONTROL PANEL ]
-[ DNA ]       [               ]
-              [               ]
-              [               ]
-
-      [ CARD UTAMA ]
-
-              [ TERMINAL ]
