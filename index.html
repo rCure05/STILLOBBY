@@ -1,360 +1,95 @@
+<!-- ========================= -->
+<!-- index.html -->
+<!-- ========================= -->
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<link rel="stylesheet" href="style.css" />
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>STILL OBBY</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif;}
+<title>Still Obby</title>
 
-body{
-    background:#000;
-    min-height:100vh;
-    overflow:hidden;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    color:#fff;
-}
+<link rel="stylesheet" href="style.css">
 
-/* CYBERPUNK CITY */
-.city{
-    position:fixed;
-    inset:0;
-    background:url('https://i.redd.it/mdvmefeejg331.jpg') center/cover no-repeat;
-    filter:brightness(.45) saturate(1.5);
-    animation:cityMove 20s linear infinite alternate;
-    z-index:-2;
-}
+<!-- GOOGLE FONT -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-@keyframes cityMove{
-    from{transform:scale(1) translateY(0);}
-    to{transform:scale(1.08) translateY(-25px);}
-}
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-/* NEON FOG */
-.city::after{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:radial-gradient(circle at center, transparent, rgba(0,0,0,.7));
-}
-
-/* LOADING */
-.loading{
-    position:fixed;
-    inset:0;
-    background:#000;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    z-index:999;
-}
-
-.loading h2{
-    letter-spacing:4px;
-    color:cyan;
-    margin-bottom:15px;
-}
-
-.bar{
-    width:260px;
-    height:8px;
-    border-radius:10px;
-    background:#111;
-    overflow:hidden;
-}
-
-.bar span{
-    display:block;
-    height:100%;
-    width:0%;
-    background:linear-gradient(90deg,cyan,magenta,cyan);
-    animation:load 3s forwards;
-}
-
-@keyframes load{to{width:100%;}}
-
-/* HUD GLOBAL */
-.hud-global{
-    position:fixed;
-    top:20px;
-    right:20px;
-    font-size:11px;
-    color:cyan;
-    border:1px solid rgba(0,255,255,.6);
-    padding:10px 14px;
-    border-radius:10px;
-    background:rgba(0,0,0,.6);
-    letter-spacing:1px;
-    z-index:10;
-    animation:pulse 2s infinite;
-}
-
-@keyframes pulse{
-    0%,100%{box-shadow:0 0 10px rgba(0,255,255,.3);}
-    50%{box-shadow:0 0 20px rgba(0,255,255,.8);}
-}
-
-/* AI PANEL */
-.ai-panel{
-    position:fixed;
-    left:15px;
-    bottom:20px;
-    width:240px;
-    padding:14px;
-    border-radius:12px;
-    background:rgba(0,0,0,.65);
-    border:1px solid rgba(0,255,255,.6);
-    color:cyan;
-    font-size:11px;
-    letter-spacing:1px;
-    box-shadow:0 0 15px rgba(0,255,255,.3);
-    z-index:9;
-}
-
-.ai-title{
-    font-weight:bold;
-    letter-spacing:2px;
-    margin-bottom:8px;
-}
-
-.ai-log{
-    height:90px;
-    overflow:hidden;
-    font-size:10px;
-    opacity:.85;
-}
-
-.ai-log div{margin-bottom:4px;}
-
-/* CARD */
-.card{
-    position:relative;
-    width:360px;
-    padding:34px;
-    border-radius:22px;
-    text-align:center;
-    background:rgba(0,0,0,.65);
-    backdrop-filter:blur(16px);
-    overflow:hidden;
-    border:2px solid transparent;
-    z-index:2;
-}
-
-/* RGB BORDER */
-.card::before{
-    content:"";
-    position:absolute;
-    inset:-2px;
-    background:linear-gradient(120deg,red,orange,yellow,green,cyan,blue,purple,red);
-    background-size:300% 300%;
-    animation:rgb 6s linear infinite;
-    z-index:-1;
-}
-
-@keyframes rgb{
-    0%{background-position:0% 50%;}
-    100%{background-position:300% 50%;}
-}
-
-/* PROFILE */
-.profile-img{
-    width:120px;
-    height:120px;
-    border-radius:50%;
-    border:3px solid cyan;
-    margin-bottom:15px;
-    box-shadow:0 0 15px cyan,0 0 45px rgba(0,255,255,.7);
-}
-
-h1,.role,.info,.social-links,.footer{position:relative;z-index:3;}
-h1{font-size:26px;letter-spacing:2px;}
-.role{font-size:13px;margin:8px 0 16px;letter-spacing:3px;color:cyan;}
-.info p{font-size:13px;margin:7px 0;opacity:.85;}
-
-.social-links a{
-    display:inline-block;
-    margin:8px;
-    padding:12px 22px;
-    border-radius:30px;
-    background:rgba(0,0,0,.6);
-    border:1px solid rgba(0,255,255,.6);
-    color:cyan;
-    text-decoration:none;
-    transition:.35s;
-    z-index:5;
-}
-
-.social-links a:hover{
-    background:cyan;
-    color:#000;
-    box-shadow:0 0 15px cyan,0 0 45px cyan;
-    transform:translateY(-4px) scale(1.08);
-}
-
-.footer{margin-top:18px;font-size:12px;opacity:.5;}
-
-.card{transition:transform .12s ease;}
-</style>
 </head>
 <body>
 
-<div class="loading" id="loading">
-    <h2>BANGGA LEWATI DENGANMU HARI INI</h2>
-    <div class="bar"><span></span></div>
-</div>
+<!-- BACKGROUND -->
+<div class="bg"></div>
 
-<div class="city"></div>
+<!-- OVERLAY -->
+<div class="overlay"></div>
 
-<div class="hud-global" id="hud"></div>
+<!-- FLOATING LIGHT -->
+<div class="light light1"></div>
+<div class="light light2"></div>
+<div class="light light3"></div>
 
-<div class="ai-panel">
-    <div class="ai-title">AI DASHBOARD</div>
-    <div class="ai-log" id="aiLog"></div>
-</div>
+<!-- MAIN CARD -->
+<div class="container">
 
-<div class="card" id="card">
-    <img src="profile.img" class="profile-img">
-    <h1>Still Obby</h1>
-    <div class="role">MULTIVERSE</div>
-    <div class="info">
-        <p>📍 Indonesia</p>
-        <p>Tak ada rotan, akar pun jadi.</p>
+    <!-- PROFILE -->
+    <div class="profile-section">
+
+        <img src="profile.jpg" class="profile-img">
+
+        <div class="online-badge"></div>
+
     </div>
 
-    <div class="social-links">
-        <a href="https://www.youtube.com/@rCure-t7w" target="_blank">YouTube</a>
-        <a href="https://discord.gg/XuTtgjDdfA" target="_blank">Discord</a>
-    </div>
-    <div class="social-links">
-        <a href="https://www.instagram.com/obbystill" target="_blank">Instagram</a>
-        <a href="https://www.tiktok.com/@stillobby" target="_blank">TikTok</a>
-    </div>
-    <div class="footer">© 2025 STILL OBBY</div>
-</div>
+    <!-- TEXT -->
+    <div class="content">
 
-<script>
-/* LOADING */
-setTimeout(()=>{
-    document.getElementById('loading').style.display='none';
-    aiVoice();
-},3000);
+        <h1>Still Obby</h1>
 
-/* HUD LIVE */
-setInterval(()=>{
-    let fps = 100 + Math.floor(Math.random()*40);
-    let ping = 10 + Math.floor(Math.random()*20);
-    let time = new Date().toLocaleTimeString();
-    document.getElementById('hud').innerHTML =
-        `FPS: ${fps}<br>PING: ${ping}ms<br>STATUS: ONLINE<br>TIME: ${time}`;
-},1000);
+        <p class="subtitle">
+            Visual Creator • Digital Dreamer • Multiverse
+        </p>
 
-/* AI LOG */
-const logs=[
-   "Hallo...",
-    "Semoga kalian bahagia...",
-    "Ini web sederhana saya...",
-    "Dengan akal akalan seadanya...",
-    "Jika berkenan...",
-    "Silahkan kunjungi beberapa...",
-    "Social media saya...",
-    "Terimakasih...",
-    "System stable ✔",
-    "AI prediction module ready...",
-    "Threat level: NONE",
-    "Neural sync complete..."
-];
+        <p class="description">
+            For more information, Click link bellow here:
+        </p>
 
-let aiIndex=0;
-setInterval(()=>{
-    const logBox=document.getElementById('aiLog');
-    if(logBox.children.length>6) logBox.removeChild(logBox.firstChild);
-    let div=document.createElement('div');
-    div.textContent="> "+logs[aiIndex%logs.length];
-    logBox.appendChild(div);
-    aiIndex++;
-},900);
-
-/* AI VOICE ASSISTANT */
-function aiVoice(){
-    const msg = new SpeechSynthesisUtterance(
-        "Selamat datang, Still Obby. Sistem cyber punk aktif. Selamat menikmati pengalaman futuristik."
-    );
-    msg.lang = "id-ID";
-    msg.rate = 0.9;
-    msg.pitch = 1.1;
-    speechSynthesis.speak(msg);
-}
-
-/* TILT 3D */
-const card=document.getElementById('card');
-
-if(window.innerWidth > 768){
-    document.addEventListener('mousemove',e=>{
-        let x=(window.innerWidth/2-e.clientX)/30;
-        let y=(window.innerHeight/2-e.clientY)/30;
-        card.style.transform=`rotateY(${x}deg) rotateX(${y}deg)`;
-    });
-
-    document.addEventListener('mouseleave',()=>{
-        card.style.transform=`rotateY(0deg) rotateX(0deg)`;
-    });
-}
-
-document.addEventListener('mouseleave',()=>{
-    card.style.transform=`rotateY(0deg) rotateX(0deg)`;
-});
-</script>
-
-<div class="particles" id="particles"></div>
-<div class="scanline"></div>
-<div class="radar">
-    <div class="sweep"></div>
-    <div class="rings"></div>
-    <div class="blips" id="blips"></div>
-</div>
-
-<!-- MATRIX RAIN -->
-<canvas id="matrix"></canvas>
-
-<!-- SYSTEM TERMINAL -->
-<div class="terminal">
-    <div class="terminal-title">SYSTEM TERMINAL</div>
-    <div class="terminal-log" id="terminalLog"></div>
-</div>
-
-<!-- DNA SCANNER -->
-<div class="dna-scanner">
-    <div class="helix"></div>
-    <div class="scanline-dna"></div>
-</div>
-
-<!-- SYSTEM CONTROL PANEL -->
-<div class="control-panel">
-    <div class="panel-title">SYSTEM CONTROL</div>
-
-    <div class="control">
-        <span>MATRIX RAIN</span>
-        <label class="switch">
-            <input type="checkbox" id="matrixToggle" checked>
-            <span class="slider"></span>
-        </label>
     </div>
 
-    <div class="control">
-        <span>NEON PARTICLES</span>
-        <label class="switch">
-            <input type="checkbox" id="particleToggle" checked>
-            <span class="slider"></span>
-        </label>
+    <!-- SOCIAL -->
+    <div class="socials">
+
+        <a href="https://instagram.com/obbystill" target="_blank">
+            Instagram
+        </a>
+
+        <a href="https://tiktok.com/@stillobby" target="_blank">
+            TikTok
+        </a>
+
+        <a href="https://discord.gg/XuTtgjDdfA" target="_blank">
+            Discord
+        </a>
+
+        <a href="https://youtube.com/@rCure-t7w" target="_blank">
+            YouTube
+        </a>
+
     </div>
 
 </div>
 
+<!-- MUSIC BUTTON -->
+<button class="music-btn" id="musicBtn">
+    ♫ ambience
+</button>
+
+<!-- CURSOR -->
+<div class="cursor"></div>
 
 <script src="script.js"></script>
 
